@@ -1,0 +1,16 @@
+.rodape-container{
+    position: fixed;
+    bottom: 0;
+}
+
+.rodape{
+    display: flex;
+}
+
+.rodape div{
+    padding:0;
+}
+
+.selected{
+    background-color: antiquewhite;
+}
