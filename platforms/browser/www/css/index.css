@@ -10,3 +10,7 @@
 .rodape div{
     padding:0;
 }
+
+.selected{
+    background-color: antiquewhite;
+}
