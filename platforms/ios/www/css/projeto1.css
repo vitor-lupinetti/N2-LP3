@@ -30,3 +30,18 @@
 #nav-top{
     margin-top: 15%;
 }
+
+.main-container-repos{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card-flex{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.card img{
+    padding-bottom: 15%;
+}
