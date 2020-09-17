@@ -1,0 +1,45 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container h3{
+    padding-top:10%;
+}
+
+.input-container{
+    display: flex;
+    padding-top: 5%;
+}
+
+.categorias-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.categorias{
+    background-color: #fdf7f0;
+    border: black solid 0.1px;
+    height: 30vh;
+    width: 70vw;
+    margin-bottom: 5%;
+    border-radius: 5%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.categorias a{
+    width: 50vw;
+}
+
+.formacao:hover{
+    background-color: blanchedalmond;
+}
