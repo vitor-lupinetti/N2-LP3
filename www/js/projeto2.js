@@ -1,30 +1,58 @@
 $(document).ready(function() {
-  var mapa = L.map('mapa').setView([-23.735927, -46.5854127], 17);;
+  $(document).on('submit', '#filterForm', async function(event) {
+    event.preventDefault();
 
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      posicao => {
-        const {
-          latitude,
-          longitude
-        } = posicao.coords;
+    const description = $('#description').val().trim();
+    const proxyurl = 'https://cors-anywhere.herokuapp.com/';
+    const apiurl = 'https://jobs.github.com/positions.json?description=';
 
-        mapa.setView([latitude, longitude]);
-      },
-      erro => {
-        $('.modal-title').html('Erro');
-        $('.modal-body').html('Não foi possível obter sua localização atual');
-        $('#modalAviso').modal('show');
+    await $.ajax({
+      cache: false,
+      dataType: 'json',
+      method: 'get',
+      url: proxyurl + apiurl + description,
+
+      beforeSend: function() {
+        $('#list').html(
+          '<div class="col">' +
+            '<div class="spinner-border" role="status">' +
+              '<span class="sr-only">Loading...</span>' +
+            '</div>' +
+          '</div>'
+        );
       }
-    );
-  }
+    })
+      .done(function(jobs) {
+        $('#list').html('');
 
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoibmF0aGFucmVpcyIsImEiOiJja2YxeGZrNXQxMTltMnJta2ZmaHRzZHEyIn0.jrlmGBzK9Tz7cM8tW4sR2g'
-  }).addTo(mapa);
+        jobs.forEach(function(job) {
+          let $card = $(`.myCard[data-company="${job.company}"]`);
+
+          if($card.length == 0) {
+            $('#list').append(
+              '<div' +
+                ' class="col-md-4 col-sm-6 mb-5 myCard"' +
+                ` data-company="${job.company}"` +
+              '>' +
+                `<a target="_blank" href="${job.company_url}">` +
+                  `<img src="${job.company_logo}" alt="${job.company}" class="img-fluid" />` +
+                '</a>' +
+  
+                '<h5 class="mt-5">Vagas</h5>' +
+                '<ul class="vacancies mb-0 align-self-start"></ul>' +
+              '</div>'
+            );
+          }
+
+          $(`.myCard[data-company="${job.company}"] ul`).first().append(
+            '<li>' +
+              `<a target="_blank" href="${job.url}" style="color: black;">${job.title}</a>` +
+            '</li>'
+          );
+        });
+      })
+      .fail(function(jqXHR) {
+        console.log(jqXHR);
+      });
+  });
 });
