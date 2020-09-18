@@ -1,3 +1,6 @@
+document.getElementsByTagName('footer')[0].appendChild(buildBottomBar());
+document.getElementById('feature3').classList.add('selected');
+
 function listaFormacoes() {
     var categoria = CapturaParametrosUrl();
     let html = '';

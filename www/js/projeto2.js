@@ -1,3 +1,6 @@
+document.getElementsByTagName('footer')[0].appendChild(buildBottomBar());
+document.getElementById('feature2').classList.add('selected');
+
 $(document).ready(function() {
   $(document).on('submit', '#filterForm', async function(event) {
     event.preventDefault();
