@@ -34,3 +34,58 @@ function buildBottomBar() {
 
   return nav;
 }
+
+function buildListItemSimple(targetPlace, title) {
+  const anchor = document.createElement('a');
+  anchor.classList.add('nav-link');
+  anchor.href = targetPlace;
+  anchor.innerHTML = title;
+
+  const listItem = document.createElement('li');
+  listItem.classList.add('nav-item');
+  listItem.appendChild(anchor);
+
+  return listItem;
+}
+
+function buildTopBar() {
+  const idTopbar = 'navbarSupportedContent';
+
+  const brand = document.createElement('a');
+  brand.classList.add('navbar-brand');
+  brand.href = '#';
+  brand.innerHTML = 'N2';
+
+  const iconToggler = document.createElement('span');
+  iconToggler.classList.add('navbar-toggler-icon');
+
+  const toggler = document.createElement('button');
+  toggler.classList.add('navbar-toggler');
+  toggler.type = 'button';
+  toggler.dataset.toggle = 'collapse';
+  toggler.dataset.target = `#${idTopbar}`;
+  toggler.appendChild(iconToggler);
+
+  const links = document.createElement('ul');
+  links.classList.add('navbar-nav');
+  links.classList.add('mr-auto');
+  links.appendChild(buildListItemSimple('#', 'Page 1'));
+  links.appendChild(buildListItemSimple('#', 'Page 2'));
+
+  const divCollapse = document.createElement('div');
+  divCollapse.classList.add('collapse');
+  divCollapse.classList.add('navbar-collapse');
+  divCollapse.id = idTopbar;
+  divCollapse.appendChild(links);
+  
+  const nav = document.createElement('nav');
+  nav.classList.add('navbar');
+  nav.classList.add('navbar-expand-lg');
+  nav.classList.add('navbar-light');
+  nav.classList.add('bg-light');
+  nav.appendChild(brand);
+  nav.appendChild(toggler);
+  nav.appendChild(divCollapse);
+
+  return nav;
+}

@@ -1,3 +1,4 @@
+document.getElementsByTagName('header')[0].appendChild(buildTopBar());
 document.getElementsByTagName('footer')[0].appendChild(buildBottomBar());
 document.getElementById('feature2').classList.add('selected');
 

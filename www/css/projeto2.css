@@ -1,3 +1,8 @@
+#list {
+  max-height: calc(100vh - 60px - 90px - 60px); /* Viewport - topbar - filter - bottombar */
+  overflow: auto;
+}
+
 .myCard {
   display: flex;
   flex-direction: column;
