@@ -81,14 +81,26 @@ document.addEventListener('DOMContentLoaded', function() {
   function buildURL() {
     const description = document.querySelector('#description').value.trim();
 
-    const apiurl = 'https://obs.github.com/positions.json?';
+    const apiurl = 'https://jobs.github.com/positions.json?';
     const descriptionParameter = `description=${description}`;
     const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
     return proxyurl + apiurl + descriptionParameter;
   }
 
+  function cleanPlaceToList() {
+    const placeToList = document.querySelector('#list');
+    let children = placeToList.firstChild;
+
+    while(children) {
+      placeToList.removeChild(children);
+      children = placeToList.firstChild;
+    }
+  }
+
   function displaySpinner() {
+    cleanPlaceToList();
+
     const column = document.createElement('div');
     column.classList.add('col');
     column.appendChild(buildSpinner());
@@ -98,9 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function displayFailRequest(error) {
-    const placeToList = document.querySelector('#list');
-    placeToList.removeChild(placeToList.firstChild); // It's going to remove the spinner
-
     const errorText = document.createElement('h3');
     errorText.classList.add('text-danger');
     errorText.classList.add('text-uppercase');
@@ -110,12 +119,12 @@ document.addEventListener('DOMContentLoaded', function() {
     column.classList.add('col');
     column.appendChild(errorText);
 
+    const placeToList = document.querySelector('#list');
     placeToList.appendChild(column);
   }
 
   function displaySuccessRequest(response) {
     const placeToList = document.querySelector('#list');
-    placeToList.removeChild(placeToList.firstChild); // It's going to remove the spinner
 
     response.forEach(function(job) {
       const {
@@ -138,12 +147,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
     displaySpinner();
 
+    let result = '';
+    let wasSuccess = false;
+
     await fetch(buildURL())
       .then(function(response) {
         return response.json();
       })
-      .then(displaySuccessRequest)
-      .catch(displayFailRequest);
+      .then(function(response) {
+        result = response;
+        wasSuccess = true;
+      })
+      .catch(function(error) {
+        result = error;
+      });
+    
+    cleanPlaceToList();
+
+    if(wasSuccess) {
+      displaySuccessRequest(result);
+    } else {
+      displayFailRequest(result);
+    }
   }
 
   filterForm.addEventListener('submit', submitFilter);
