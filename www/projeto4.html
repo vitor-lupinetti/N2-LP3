@@ -8,7 +8,7 @@
     <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/index.css">
-    <title>Hello World</title>
+    <title>Hello World </title>
 </head>
 
 <body>
@@ -44,7 +44,48 @@
       
     </div>
   </nav>
+  <div class= "container-fluid p-3  bg-dark text-white" >
+    <h1>Comparações de linguagens</h1>
+    <p>Esta Feature visa comparar duas linguagens de programação em um gráfico, os dados são obtidos por meio da consulta de API dos repositórios do github. Algumas consultas podem ser influenciadas pelo timeout</p>
+    <p class="lang"> Selecione a primeira linguagem</p>
 
+    
+      <select id="Linguagem1">
+          <option value="Python">Python</option>
+          <option value="Java">Java</option>
+          <option value="C">C</option>
+          <option value="Php">Php</option>
+          <option value="Ruby">Ruby</option>
+          <option value="Lua">Lua</option>
+          <option value="Swift">Swift</option>
+      </select>
+   
+    
+    <p class="lang" >Selecione a segunda linguagem</p>
+
+    
+      <select id="Linguagem2">
+        <option value="Python">Python</option>
+        <option value="Java">Java</option>
+        <option value="C">C</option>
+        <option value="Php">Php</option>
+        <option value="Ruby">Ruby</option>
+        <option value="Lua">Lua</option>
+        <option value="Swift">Swift</option>
+      </select>
+    
+    
+  </div>
+  <div class= "container-fluid pt-3">
+    <button type="button" class="btn btn-info" onclick="GetRepos();">Comparar</button>
+  </div>
+
+  <div class="container-fluid pt-3">
+    <div class="chart-container" style="position: relative; height:40vh; width:80vw">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+  
   <footer id="footer"></footer>
       
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -59,6 +100,7 @@
     crossorigin="anonymous"
   ></script>
   <script src="./js/commomFunctions.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="./js/projeto4.js"></script>
 </body>
 
