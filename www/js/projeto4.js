@@ -8,7 +8,9 @@ let valorSegundo;
 
 var nome1;
 var nome2;
-function GetRepos(){
+let primeiro = true;
+let chart;
+function SetPath(){
     var prog1 = document.getElementById("Linguagem1");
     nome1 = prog1.options[prog1.selectedIndex].value;
     path1 =  "https://api.github.com/search/repositories?q=language:" + nome1;
@@ -35,9 +37,14 @@ async function requisicoesGrafico(path1,path2){
     let objRequisicao2 = await requisicao2.json();
     console.log(objRequisicao2);
     valorSegundo = objRequisicao2.total_count;
+    if(!primeiro){
 
+        chart.destroy();
+        
+    }
+    
     let ctx = document.getElementById('myChart').getContext('2d');
-    let chart = new Chart(ctx,{
+    chart = new Chart(ctx,{
         type:'bar',
         data:{
             labels:[nome1, nome2],
@@ -70,5 +77,5 @@ async function requisicoesGrafico(path1,path2){
                     }
                 });
     console.log(nome1 + " primeiro: " + valorPrimeiro +" "+ nome2 + " segundo: " + valorSegundo);
-
+    primeiro = false;
     }
