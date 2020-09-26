@@ -1,5 +1,7 @@
-document.getElementsByTagName('footer')[0].appendChild(buildBottomBar());
-document.getElementById('feature4').classList.add('selected');
+document.querySelector('header').appendChild(buildTopBar());
+document.querySelector('footer').appendChild(buildBottomBar());
+document.querySelector('#feature4').classList.add('selected');
+
 let path1;
 let path2;
 

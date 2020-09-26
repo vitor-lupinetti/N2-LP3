@@ -1,6 +1,6 @@
-document.getElementsByTagName('header')[0].appendChild(buildTopBar());
-document.getElementsByTagName('footer')[0].appendChild(buildBottomBar());
-document.getElementById('feature2').classList.add('selected');
+document.querySelector('header').appendChild(buildTopBar());
+document.querySelector('footer').appendChild(buildBottomBar());
+document.querySelector('#feature2').classList.add('selected');
 
 document.addEventListener('DOMContentLoaded', function() {
   const filterForm = document.querySelector('#filterForm');

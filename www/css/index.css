@@ -11,7 +11,8 @@
     display: flex;
 }
 
-.rodape a{
+.rodape a {
+    background-color: white;
     color: black;
     padding:0;
     text-align: center;
@@ -19,7 +20,7 @@
 }
 
 .selected{
-    background-color: antiquewhite;
+    background-color: antiquewhite !important;
 }
 
 .home-container{
@@ -45,4 +46,9 @@
     border: solid black 1px;
     border-radius: 5%;
     background-color: #f1eed0;
+}
+
+.col {
+    padding-left: 0;
+    padding-right: 0;
 }

@@ -1,3 +1,7 @@
+document.querySelector('header').appendChild(buildTopBar());
+document.querySelector('footer').appendChild(buildBottomBar());
+document.querySelector('#feature1').classList.add('selected');
+
 function callApi() {
 
     var input = document.getElementById("input").value;

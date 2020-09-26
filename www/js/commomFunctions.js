@@ -69,8 +69,11 @@ function buildTopBar() {
   const links = document.createElement('ul');
   links.classList.add('navbar-nav');
   links.classList.add('mr-auto');
-  links.appendChild(buildListItemSimple('#', 'Page 1'));
-  links.appendChild(buildListItemSimple('#', 'Page 2'));
+  links.appendChild(buildListItemSimple('index.html', 'Início'));
+  links.appendChild(buildListItemSimple('projeto1.html', 'Feature 1'));
+  links.appendChild(buildListItemSimple('projeto2.html', 'Feature 2'));
+  links.appendChild(buildListItemSimple('projeto3.html', 'Feature 3'));
+  links.appendChild(buildListItemSimple('projeto4.html', 'Feature 4'));
 
   const divCollapse = document.createElement('div');
   divCollapse.classList.add('collapse');
