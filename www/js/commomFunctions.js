@@ -1,25 +1,25 @@
-function buildAnchor(page, title, icon, id) {
-  const breakLine = document.createElement('br');
-
-  const spanIcon = document.createElement('span');
-  spanIcon.classList.add('icon-font');
-  spanIcon.innerHTML = icon;
-
-  const strong = document.createElement('strong');
-  strong.innerHTML = title;
-  strong.appendChild(breakLine);
-  strong.appendChild(spanIcon);
-
-  const anchor = document.createElement('a');
-  anchor.id = id;
-  anchor.classList.add('col');
-  anchor.href = page;
-  anchor.appendChild(strong);
-
-  return anchor;
-}
-
 function buildBottomBar() {
+  function buildAnchor(page, title, icon, id) {
+    const breakLine = document.createElement('br');
+  
+    const spanIcon = document.createElement('span');
+    spanIcon.classList.add('icon-font');
+    spanIcon.innerHTML = icon;
+  
+    const strong = document.createElement('strong');
+    strong.innerHTML = title;
+    strong.appendChild(breakLine);
+    strong.appendChild(spanIcon);
+  
+    const anchor = document.createElement('a');
+    anchor.id = id;
+    anchor.classList.add('col');
+    anchor.href = page;
+    anchor.appendChild(strong);
+  
+    return anchor;
+  }
+
   const divFeatures = document.createElement('div');
   divFeatures.id = 'features';
   divFeatures.classList.add('row');
@@ -34,20 +34,20 @@ function buildBottomBar() {
   return nav;
 }
 
-function buildListItemSimple(targetPlace, title) {
-  const anchor = document.createElement('a');
-  anchor.classList.add('nav-link');
-  anchor.href = targetPlace;
-  anchor.innerHTML = title;
-
-  const listItem = document.createElement('li');
-  listItem.classList.add('nav-item');
-  listItem.appendChild(anchor);
-
-  return listItem;
-}
-
 function buildTopBar() {
+  function buildListItemSimple(targetPlace, title) {
+    const anchor = document.createElement('a');
+    anchor.classList.add('nav-link');
+    anchor.href = targetPlace;
+    anchor.innerHTML = title;
+  
+    const listItem = document.createElement('li');
+    listItem.classList.add('nav-item');
+    listItem.appendChild(anchor);
+  
+    return listItem;
+  }
+
   const idTopbar = 'navbarSupportedContent';
 
   const brand = document.createElement('a');
