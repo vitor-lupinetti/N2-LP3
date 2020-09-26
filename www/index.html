@@ -12,33 +12,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">N2</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Início <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="projeto1.html">Feature 1</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="projeto2.html">Feature 2</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="projeto3.html">Feature 3</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="projeto4.html">Feature 4</a>
-            </li>
-          </ul>
-          
-        </div>
-      </nav>
+    <header></header>
 
       <div class="home-container">
         <img src="./img/web.svg">
@@ -70,7 +44,51 @@
     ></script>
     <script src="./js/commomFunctions.js"></script>
     <script>
+      document.querySelector('header').appendChild(buildTopBar());
       document.querySelector('footer').appendChild(buildBottomBar());
+
+      function buildMembersButton() {
+        const emojis = document.createElement('span');
+        emojis.classList.add('icon-font');
+        emojis.innerHTML = '&#x1f913;&#x1f913;&#x1f913;&#x1f913;';
+
+        const strong = document.createElement('strong');
+        strong.innerHTML = 'Integrantes';
+        strong.appendChild(document.createElement('br'));
+        strong.appendChild(emojis);
+
+        const button = document.createElement('button');
+        button.classList.add('navbar-toggler');
+        button.type = 'button';
+        button.dataset.toggle = 'collapse';
+        button.dataset.target = '#integrantes';
+        button.appendChild(strong);
+
+        return button;
+      }
+
+      function buildMembersDiv() {
+        function buildMember(memberName) {
+          const member = document.createElement('h6');
+          member.innerHTML = memberName;
+
+          return member;
+        }
+
+        const members = document.createElement('div');
+        members.classList.add('collapse');
+        members.classList.add('pb-2');
+        members.id = 'integrantes';
+        members.appendChild(buildMember('Nathan Reis'));
+        members.appendChild(buildMember('Silas Hiuga'));
+        members.appendChild(buildMember('Vitor Lupinetti'));
+        members.appendChild(buildMember('William Oliveira'));
+
+        return members;
+      }
+
+      document.querySelector('footer nav').prepend(buildMembersButton());
+      document.querySelector('footer').prepend(buildMembersDiv());
     </script>
 </body>
 

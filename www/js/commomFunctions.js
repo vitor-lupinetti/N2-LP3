@@ -20,17 +20,16 @@ function buildAnchor(page, title, icon, id) {
 }
 
 function buildBottomBar() {
-  const divFooter = document.createElement('div');
-  divFooter.classList.add('rodape');
-  divFooter.appendChild(buildAnchor('projeto1.html', 'Feature 1', '&#x1f4f0;', 'feature1'));
-  divFooter.appendChild(buildAnchor('projeto2.html', 'Feature 2', '&#x1f4cc;', 'feature2'));
-  divFooter.appendChild(buildAnchor('projeto3.html', 'Feature 3', '&#x1F4DD;', 'feature3'));
-  divFooter.appendChild(buildAnchor('projeto4.html', 'Feature 4', '&#x1F981;', 'feature4'));
+  const divFeatures = document.createElement('div');
+  divFeatures.id = 'features';
+  divFeatures.classList.add('row');
+  divFeatures.appendChild(buildAnchor('projeto1.html', 'Feature 1', '&#x1f4f0;', 'feature1'));
+  divFeatures.appendChild(buildAnchor('projeto2.html', 'Feature 2', '&#x1f4cc;', 'feature2'));
+  divFeatures.appendChild(buildAnchor('projeto3.html', 'Feature 3', '&#x1F4DD;', 'feature3'));
+  divFeatures.appendChild(buildAnchor('projeto4.html', 'Feature 4', '&#x1F981;', 'feature4'));
 
   const nav = document.createElement('nav');
-  nav.classList.add('rodape-container');
-  nav.classList.add('col');
-  nav.appendChild(divFooter);
+  nav.appendChild(divFeatures);
 
   return nav;
 }

@@ -2,25 +2,26 @@
     padding-bottom: 50px;
 }
 
-.rodape-container{
+footer {
     position: fixed;
     bottom: 0;
-}
-
-.rodape{
-    display: flex;
-}
-
-.rodape a {
     background-color: white;
+    text-align: center;
+    width: 100%;
+}
+
+#features a {
     color: black;
     padding:0;
-    text-align: center;
     text-decoration: none;
 }
 
+footer button:focus {
+    outline: none;
+}
+
 .selected{
-    background-color: antiquewhite !important;
+    background-color: antiquewhite;
 }
 
 .home-container{
@@ -28,7 +29,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .home-container img{
@@ -46,9 +46,4 @@
     border: solid black 1px;
     border-radius: 5%;
     background-color: #f1eed0;
-}
-
-.col {
-    padding-left: 0;
-    padding-right: 0;
 }
